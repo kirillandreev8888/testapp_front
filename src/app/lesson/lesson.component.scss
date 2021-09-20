@@ -1,0 +1,8 @@
+.lessonBox{
+    text-align: center;
+    &:hover{
+        color: red;
+        cursor: pointer;
+        background-color: rgb(245, 245, 245);
+    }
+}

@@ -1,0 +1,21 @@
+<div data-bs-toggle="modal" data-bs-target="#exampleModal" id="lesson" (click)="editLesson()">
+    <div class="lessonBox" *ngIf="isLesson()">
+        <div id="text">
+            {{ findThisLesson().info }}
+        </div>
+        <div id="tutor">
+            {{ findThisLesson().tutor!.name}}
+        </div>
+
+    </div>
+    <div class="lessonBox" *ngIf="!isLesson()">
+        <div style="color: lightgrey;" id="text">
+            ---
+        </div>
+        <div style="color: lightgrey;" id="tutor">
+            Занятие № {{time}}
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,46 @@
+<div style="margin-top: 10%;" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Редактирование занятия</h5>
+                <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Информация:</label>
+                        <input type="text" class="form-control" id="recipient-name"
+                            value="{{ getLesson().info }}" id="infodata" name="infodata" #infodata placeholder="Введите информацию">
+
+                    </div>
+                    <!--  -->
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Преподаватель:</label>
+                        <select id="title_status" class="form-control" #tutordata>
+                            <!-- текующий преподаватель -->
+                            <option *ngIf="isLesson()" selected value={{tutorToText(getLesson().tutor)}}> {{
+                                getLesson().tutor.name}}
+                            </option>
+                            <!-- доступные преподаватели -->
+                            <option *ngFor="let tutor of getAvailTutors()" value={{tutorToText(tutor)}}>
+                                {{ tutor.name }}
+                            </option>
+                            <!-- недоступные преподаватели -->
+                            <option disabled style="color: rgb(219, 150, 150)" *ngFor="let tutor of getUnavailTutors()">
+                                {{ tutor.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!--  -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button *ngIf="isLesson()" type="button" class="btn btn-danger" (click)="deleteLesson()" data-bs-dismiss="modal">Удалить</button>
+                <button *ngIf="!isLesson()" disabled type="button" class="btn btn-danger" (click)="deleteLesson()" data-bs-dismiss="modal">Удалить</button>
+                <button type="button" class="btn btn-primary" (click)="saveLesson(infodata.value, tutordata.value)">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>

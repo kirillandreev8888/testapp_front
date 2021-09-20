@@ -1,0 +1,35 @@
+    .addGroupButton{
+        margin-left: 25px;
+    }
+
+.container {
+    padding-top: 1rem;
+    width: 75%;
+    margin: 0 auto;
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+    .groupContainer {
+        $padding: 10px;
+
+        // float: left;
+        // margin-left: 50px;
+        // padding-left: $padding;
+        // padding-right: $padding;
+        // border: 0.5px solid black;
+
+        .dayContainer {
+            border: 2px solid black;
+            padding: $padding;
+        }
+
+        .list-group {
+            
+            .list-group-item {
+                padding-top: 1px;
+                padding-bottom: 1px;
+            }
+        }
+    }
+}
